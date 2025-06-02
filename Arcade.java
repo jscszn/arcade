@@ -7,6 +7,9 @@ package arcade;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+
 /**
  *
  * @author j19se
@@ -19,19 +22,50 @@ public class Arcade {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Scanner lector = new Scanner(System.in);        
+        Scanner lector = new Scanner(System.in);
         
-        int select_arcade = Integer.parseInt(JOptionPane.showInputDialog(null, "Bienvenido al eco-arcade. ¿Qué juego deseas jugar?\n" +
-                "1. Eco-rescate: Reforesta antes del colapso\n" +
-                "2. Mareas del destino: Defensa costera",
+        UIManager.put("OptionPane.okButtonText", "Continuar");
+        
+        // Imagenes contexto
+        
+        ImageIcon seleccion = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//0.png//"); // Imagen de selección
+        
+        ImageIcon imagen_1 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//1.png"); // Primera imagen contexto 
+        
+        ImageIcon imagen_2 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//2.png"); // Segunda imagen contexto 
+        
+        ImageIcon imagen_3 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//3.png"); // Tercera imagen contexto 
+       
+
+        JOptionPane.showMessageDialog(null, seleccion, "ECO-ARCADE", JOptionPane.PLAIN_MESSAGE);
+        
+        JOptionPane.showMessageDialog(null, imagen_1, "ECO-ARCADE", JOptionPane.PLAIN_MESSAGE);
+        
+        JOptionPane.showMessageDialog(null, imagen_2, "ECO-ARCADE", JOptionPane.PLAIN_MESSAGE);
+        
+        // Imagenes juegos
+        
+        ImageIcon imagen_4 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//4.png"); // Imagen principal "Eco-Rescate"
+        
+        ImageIcon imagen_5 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//5.png"); // Victoria "Eco-Rescate"
+        
+        ImageIcon imagen_6 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//6.png"); // Derrota "Eco-Rescate"
+        
+        ImageIcon imagen_7 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//7.png"); // Imagen principal "Mareas del destino"
+        
+        ImageIcon imagen_8 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//8.png"); // Victoria "Mareas del destino"
+        
+        ImageIcon imagen_9 = new ImageIcon("C://Users//j19se//OneDrive//Documents//Code//Proyectos - NetBeans//arcade//ilustraciones//9.png"); // Derrota "Mareas del destino"
+        
+        int select_arcade = Integer.parseInt(JOptionPane.showInputDialog(null, imagen_3,
                 "ECO-ARCADE", JOptionPane.INFORMATION_MESSAGE));
+        
+        try {
         
  if (select_arcade == 1) {
             
             JOptionPane.showMessageDialog(null, 
-    "Hola, activista. El medio-ambiente está en crisis. La naturaleza se rebeló.\n" +
-    "Planta 100 árboles antes de que la temperatura global llegue a 2.0 °C.\n" +
-    "Tu misión empieza ahora.",
+    imagen_4,
     "¡ECORESCATE!", JOptionPane.INFORMATION_MESSAGE);
 
             
@@ -97,18 +131,11 @@ public class Arcade {
                 
             } if(temperatura > 2.0) {
                 
-             JOptionPane.showMessageDialog(null,
-                     "💀 Game over. La temperatura global ha superado los 2.0 °C \n" +
-                     "El colapso climático es irreversible. El planeta sufre las consecuencias",
-                     "CRISIS CLIMÁTICA", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null, imagen_6, "DERROTA", JOptionPane.PLAIN_MESSAGE);
                            
             } else {
                 
-                    JOptionPane.showMessageDialog(null,
-    "🌿 ¡Victoria! Has plantado 100 árboles antes del colapso.\n" +
-    "La temperatura se estabiliza y el planeta respira nuevamente.\n" +
-    "¡Gracias por ser un héroe climático!",
-    "MISIÓN CUMPLIDA", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, imagen_5, "VICTORIA", JOptionPane.PLAIN_MESSAGE);
                 
             }
             
@@ -118,10 +145,7 @@ public class Arcade {
     } else if (select_arcade == 2) {
         
         JOptionPane.showMessageDialog(null, 
-    "Hola, activista. El cambio climático está afectando la ciudad.\n" +
-    "El nivel del mar está aumentando dramáticamente.\n" +
-    "Tienes diez años para salvar la ciudad de un desastre.\n" +
-    "Comienza ahora.",
+                imagen_7,
     "¡MAREAS DEL DESTINO!", JOptionPane.INFORMATION_MESSAGE);
         
         int presupuesto = 100,avance_mar = 0, resistencia = 0, accion_1;
@@ -223,18 +247,11 @@ public class Arcade {
      
      if (resistencia > avance_mar) {
          
-         JOptionPane.showMessageDialog(null,
-    "🌊 ¡Victoria! Has resistido el aumento del nivel del mar.\n" +
-    "Salvaste a la ciudad de hundirse para siempre.\n" +
-    "¡Gracias por ser un héroe climático!",
-    "MISIÓN CUMPLIDA", JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null, imagen_8, "VICTORIA", JOptionPane.PLAIN_MESSAGE);;
          
      } else {
          
-                      JOptionPane.showMessageDialog(null,
-                     "💀 Game over. El nivel del mar superó las resistencias... \n" +
-                     "La inundación es inevitable. Todos mueren ahogados.",
-                     "CRISIS CLIMÁTICA", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(null, imagen_9, "DERROTA", JOptionPane.PLAIN_MESSAGE);
          
      }
         
@@ -242,6 +259,13 @@ public class Arcade {
         
         
     }
+    } catch (Exception e) {
+        
+            System.out.println("Error inesperado. Intente nuevamente.");
+            
     }
         
     }
+    
+    
+}
